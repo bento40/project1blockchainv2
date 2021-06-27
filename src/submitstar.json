@@ -1,0 +1,10 @@
+        {
+            "address": "bc1qrg33ugya38qt825mw8lvjuy6fk9qs5vu88z4ma",
+            "signature":"IE3kFK/mg/DHPjmZkgCwmC1qFhYcpqGnX1rGBHXN8rDhcTyge/yQlzu0e3J73Ge6ysZ4OSnZRtsOw2FYg1Ownxc==",
+            "message":"bc1qrg33ugya38qt825mw8lvjuy6fk9qs5vu88z4ma:1624782054:starRegistry",
+            "star": {
+                "dec": "68° 52' 56.9",
+                "ra": "16h 29m 1.0s",
+                "story": "Testing the story 4"
+            }
+        }
