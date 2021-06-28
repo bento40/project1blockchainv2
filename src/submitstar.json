@@ -1,10 +1,50 @@
         {
-            "address": "bc1qrg33ugya38qt825mw8lvjuy6fk9qs5vu88z4ma",
-            "signature":"IE3kFK/mg/DHPjmZkgCwmC1qFhYcpqGnX1rGBHXN8rDhcTyge/yQlzu0e3J73Ge6ysZ4OSnZRtsOw2FYg1Ownxc==",
-            "message":"bc1qrg33ugya38qt825mw8lvjuy6fk9qs5vu88z4ma:1624782054:starRegistry",
+            "address": "13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT",
+            "signature":"HwWh/SGqd8egb+8iHm4kU2I4wmddcyJ3CPmasEdRpNmwfScDOMYTKeZ5DZFDe7Gg4aW8lTjAQt3OgvrFfRo6HFE=",
+            "message":"13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT:1624867362:starRegistry"  ,
             "star": {
                 "dec": "68° 52' 56.9",
                 "ra": "16h 29m 1.0s",
                 "story": "Testing the story 4"
             }
         }
+        zchain = new Blockchain();
+        let address = "13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT";
+        let signature ="HyWcNaR+2EVtN0QozFxJHBxrMfT9b199KPx0MhJ45DFbFA/8B2oNFu3r63P5wYEwhlSIQyVQg1xn/3yE193Pcxc=";
+        let message = "13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT:1624851040:starRegistry";
+        let star = {"star": {"dec": "68° 52' 56.9","ra": "16h 29m 1.0s","story": "Testing the story 4"}};
+
+        let star2 = {"star": {"dec": "68 52 56.9","ra": "16h 29m 1.0s","story": "Testing the story 4"}};
+s
+        zchain.submitStar(address, message, signature, star) 
+        let encodedata2 = hex2ascii(zchain.chain[1].body);
+        encodedata2
+        let decodedata2 = JSON.parse(encodedata2);
+        decodedata2
+        let jsondecode2 = JSON.parse(decodedata2);
+        jsondecode2
+
+        dd = zchain.chain[1].getBData();
+        dd.then(dd.addresss);
+
+        zchain.getStarsByWalletAddress("13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT")
+
+
+        let stars = [];
+        stars.push(`"owner":"abc","star":"cdf"`)
+        stars.push({"owner":"abc","star":"cdf"})
+
+        let star2 = {"star": {"dec": "68° 52' 56.9","ra": "16h 29m 1.0s","story": "Testing the story 4"}};
+
+let 
+
+        {
+            "address": "bc1qrg33ugya38qt825mw8lvjuy6fk9qs5vu88z4ma",
+            
+            
+        }
+        create(seed_type="standard", wallet_path="/path/to/wallet/wallet_1")
+        create(seed_type='standard')
+
+       seed
+        cargo discover require object retreat cousin rude nothing fabric shadow bronze rack

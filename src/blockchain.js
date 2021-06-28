@@ -8,7 +8,7 @@
  *  
  */
 
-const SHA256 = require('crypto-js/sha256');
+//const SHA256 = require('crypto-js/sha256');
 const BlockClass = require('./block.js');
 const bitcoinMessage = require('bitcoinjs-message');
 //var bitcoin = require('bitcoinjs-lib') // v4.x.x
@@ -20,7 +20,7 @@ class Blockchain {
      * of your chain (the length of your chain array).
      * Also everytime you create a Blockchain class you will need to initialized the chain creating
      * the Genesis Block.
-     * The methods in this class will always return a Promise to allow client applications or
+     * The methods in this class will always turn a Promise to allow client applications or
      * other backends to call asynchronous functions.
      */
     constructor() {
@@ -64,7 +64,7 @@ class Blockchain {
      */
      _addBlock(newBlock) {
         let self = this;
-        return new Promise(async (resolve,reject) => {
+        return new Promise(async (resolve) => {
             newBlock.height = self.chain.length;                                            // Block Height (consecutive number of each block)
             newBlock.time = new Date().getTime().toString().slice(0,-3);                   // Timestamp for the Block creation
             if (this.chain.length == 0){          
@@ -116,16 +116,40 @@ class Blockchain {
      * @param {*} signature 
      * @param {*} star 
      */
+    //submitStar version 1 (not JSON)
+    // submitStar(address, message, signature, star) {
+    //     let self = this;
+    //     return new Promise(async (resolve, reject) => {
+    //         let time = parseInt(message.split(':')[1]);
+    //         let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
+    //         let submitdata = address+"|"+message+"|"+signature+"|"+star;
+    //         if ( (currentTime- time)/60 <5){
+    //             if (bitcoinMessage.verify(message,address,signature)){
+    //                 let newBlock = new BlockClass.Block({data: submitdata});
+    //                 this._addBlock(newBlock);
+    //                 resolve(newBlock);
+    //             }
+    //             reject();
+    //         } else {
+    //             reject();
+    //         }
+    //     });
+    // }
+
+
+
     submitStar(address, message, signature, star) {
         let self = this;
         return new Promise(async (resolve, reject) => {
             let time = parseInt(message.split(':')[1]);
             let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
-            let submitdata = address+"|"+message+"|"+signature+"|"+star
+
+            let submitdata = `{"address": "${address}", "message": "${message}", "signature": "${signature}", "star": ${JSON.stringify(JSON.parse(JSON.stringify(star.star)))} }`;
+
             if ( (currentTime- time)/60 <5){
                 if (bitcoinMessage.verify(message,address,signature)){
-                    newBlock = new BlockClass.Block(submitdata);
-                    this._addBlock(new Block(newBlock));
+                    let newBlock = new BlockClass.Block(submitdata);
+                    self._addBlock(newBlock);
                     resolve(newBlock);
                 }
                 reject();
@@ -180,11 +204,14 @@ class Blockchain {
         let self = this;
         let stars = [];
         return new Promise((resolve, reject) => {
-            let ownerBlock = self.chain.filter(p =>p.body.split('|')[3] === address);
-            if(ownerBlock){
-                resolve(ownerBlock);
-            } else {
-                resolve(null);
+            let ownerBlockArray = self.chain.filter(p =>p.getBData().address === address);
+            for(i=0; i< ownerBlockArray.length; i++){
+                stars.push({ "owner": `${ownerBlockArray.getBData().address}`, "star": `${ownerBlockArray.getBData().star}`});
+            }
+            if(stars){
+                resolve(stars);
+            } else {    
+                reject(null);
             }        
         });
     }
@@ -199,22 +226,22 @@ class Blockchain {
         let self = this;
         let errorLog = [];
         return new Promise(async (resolve, reject) => {
-            for (let i=0; i< this.chain.length; i++){
-                const currBlock = this.chain[i];
-                const prevBlock = this.chain[i-1];
+            for (let i=0; i< self.chain.length; i++){
+                const currBlock = self.chain[i];
+                const prevBlock = self.chain[i-1];
 
                 if(currBlock.validate()){
                     resolve(true);
                 } else {
-                    errorLog.push(this.chain[i].height+" is error");
-                    console.log(this.chain[i]+"is error")
+                    errorLog.push(self.chain[i].height+" is error");
+                    console.log(self.chain[i]+"is error")
                     reject(false);
                 }
                 if(prevBlock.validate()){
                     resolve(true);
                 } else {
-                    errorLog.push(this.chain[i-1].height+" is error");
-                    console.log(this.chain[i-1]+"is error")
+                    errorLog.push(self.chain[i-1].height+" is error");
+                    console.log(self.chain[i-1]+"is error")
                     reject(false);
                 }
 
