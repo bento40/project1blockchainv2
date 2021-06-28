@@ -88,9 +88,9 @@ class Blockchain {
         let self = this;
         let stars = [];
         return new Promise((resolve, reject) => {
-            let ownerBlockArray = self.chain.filter(p =>JSON.parse(p.getBData()).address === address);
+            let ownerBlockArray = self.chain.filter(p =>p.getBData().address === address);
             for(let i=0; i< ownerBlockArray.length; i++){
-                stars.push({ "owner": `${JSON.parse(ownerBlockArray.getBData()).address}`, "star": `${JSON.parse(ownerBlockArray.getBData()).star}`});
+                stars.push({ "owner": `${ownerBlockArray.getBData().address}`, "star": `${ownerBlockArray.getBData().star}`});
             }
             if(stars){
                 resolve(stars);
@@ -100,24 +100,24 @@ class Blockchain {
         });
     }
 
-    submitStar(address, message, signature, star) {
-        let self = this;
-        return new Promise(async (resolve, reject) => {
-            // let time = parseInt(message.split(':')[1]);
-            // let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
-            let submitdata = address+"|"+message+"|"+signature+"|"+star;
-            // if ( (currentTime- time)/60 <5){
-            //     if (bitcoinMessage.verify(message,address,signature)){
-                    let newBlock = new BlockClass.Block({data: submitdata});
-                    this._addBlock(newBlock);
-                    resolve(newBlock);
-            //     }
-            //     reject();
-            // } else {
-            //     reject();
-            // }
-        });
-    }
+    // submitStar(address, message, signature, star) {
+    //     let self = this;
+    //     return new Promise(async (resolve, reject) => {
+    //         // let time = parseInt(message.split(':')[1]);
+    //         // let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
+    //         let submitdata = address+"|"+message+"|"+signature+"|"+star;
+    //         // if ( (currentTime- time)/60 <5){
+    //         //     if (bitcoinMessage.verify(message,address,signature)){
+    //                 let newBlock = new BlockClass.Block({data: submitdata});
+    //                 this._addBlock(newBlock);
+    //                 resolve(newBlock);
+    //         //     }
+    //         //     reject();
+    //         // } else {
+    //         //     reject();
+    //         // }
+    //     });
+    // }
 
 
     // submitStar(address, message, signature, star) {
@@ -142,4 +142,25 @@ class Blockchain {
     //         // }
     //     });
     // }
+
+    submitStar(address, message, signature, star) {
+        let self = this;
+        return new Promise(async (resolve, reject) => {
+            // let time = parseInt(message.split(':')[1]);
+            // let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
+
+            let submitdata = `{"address": "${address}", "message": "${message}", "signature": "${signature}", "star": ${JSON.stringify(star.star)}} `; //
+
+            // if ( (currentTime- time)/60 <5){
+            //     if (bitcoinMessage.verify(message,address,signature)){
+                    let newBlock = new BlockClass.Block(submitdata);
+                    self._addBlock(newBlock);
+                    resolve(newBlock);
+        //         }
+        //         reject();
+        //     } else {
+        //         reject();
+        //     }
+         });
+    }
 };

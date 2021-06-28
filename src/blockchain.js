@@ -144,7 +144,7 @@ class Blockchain {
             let time = parseInt(message.split(':')[1]);
             let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
 
-            let submitdata = `{"address": "${address}", "message": "${message}", "signature": "${signature}", "star": ${JSON.stringify(JSON.parse(JSON.stringify(star.star)))} }`;
+            let submitdata = `{"address": "${address}", "message": "${message}", "signature": "${signature}", "star": ${JSON.stringify(star.star)}} `; //
 
             if ( (currentTime- time)/60 <5){
                 if (bitcoinMessage.verify(message,address,signature)){
