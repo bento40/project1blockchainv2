@@ -70,23 +70,57 @@ class Block {
      *  3. Resolve with the data and make sure that you don't need to return the data for the `genesis block` 
      *     or Reject with an error.
      */
-    getBData() {
-        // Getting the encoded data saved in the Block
-        return new Promise ((resolve,reject)=>{    
-        let encodedata = hex2ascii(this.body);
-        // Decoding the data to retrieve the JSON representation of the object
-        let decodedata = JSON.parse(encodedata);
-        let jsondecode = JSON.parse(decodedata); // try paste outside
-        // Parse the data to an object to be retrieve.
+    // getBData() 
+    // {
+    //     // Getting the encoded data saved in the Block
+    //     return new Promise ((resolve,reject)=>{    
+    //     let encodedata = hex2ascii(this.body);
+    //     // Decoding the data to retrieve the JSON representation of the object
+    //     let decodedata = JSON.parse(encodedata);
+    //     //let jsondecode = JSON.parse(decodedata); // try paste outside
+    //     // Parse the data to an object to be retrieve.
         
-        if (this.height!==0){
-        resolve(jsondecode);
-        }
-         else {reject('this is genesis block')}}
-        // Resolve with the data if the object isn't the Genesis block
+    //     if (this.height!==0){
+    //     resolve(decodedata);
+    //     }
+    //      else {reject('this is genesis block')}}
+    //     // Resolve with the data if the object isn't the Genesis block
 
-        )
+    //     )
+    // }
+
+
+    // no promise
+    getBData() 
+    {
+        let self = this;
+
+        // Getting the encoded data saved in the Block
+        return JSON.parse(hex2ascii(self.body));
+        
+        // // Decoding the data to retrieve the JSON representation of the object
+        // let decodedata = JSON.parse(encodedata);
+        // //let jsondecode = JSON.parse(decodedata); // try paste outside
+        // // Parse the data to an object to be retrieve.
+        
+        // if (this.height!==0){
+        // resolve(decodedata);
+        // }
+        //  else {reject('this is genesis block')}}
+        // // Resolve with the data if the object isn't the Genesis block
+
+        // )
     }
+
+    //short promise
+
+    // getBData() 
+    // {
+    //     return new Promise ((resolve,reject)=>{ 
+    //     resolve(JSON.parse(hex2ascii(this.body)));
+    //     })
+    // }
+    
 
 }
 

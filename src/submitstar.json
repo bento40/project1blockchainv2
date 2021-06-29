@@ -1,75 +1,11 @@
         {
             "address": "13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT",
-            "signature":"IHetXCbal76pfHNnQ35BHWQTfXT888gYl+L3Pru1mCjuVxODg//1moZWPVHX4eILa4f2XIBhbcJLf8pYHynz4bM=",
-            "message":"13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT:1624870881:starRegistry"  ,
+            "signature":"HzHhEJmxWH93LR6OEyphU75wPa+FKVWNMCeDuetijFO3Bx9djFvwmXqef8V2tVVpEL1locp3cSMgsOmG5dSFOK8=",
+            "message":"13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT:1624970314:starRegistry" ,
             "star": {
                 "dec": "68° 52' 56.9",
                 "ra": "16h 29m 1.0s",
                 "story": "Testing the story 4"
             }
         }
-        zchain = new Blockchain();
-        let address = "13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT";
-        let signature ="HyWcNaR+2EVtN0QozFxJHBxrMfT9b199KPx0MhJ45DFbFA/8B2oNFu3r63P5wYEwhlSIQyVQg1xn/3yE193Pcxc=";
-        let message = "13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT:1624851040:starRegistry";
-        let star = {"star": {"dec": "68° 52' 56.9","ra": "16h 29m 1.0s","story": "Testing the story 4"}};
-
-
-        let star2 = {"star": {"dec": "68 52 56.9","ra": "16h 29m 1.0s","story": "Testing the story 4"}};
-
-        let star4 = {"star": "starward"};
-
-s
-        zchain.submitStar(address, message, signature, star) 
-        let encodedata2 = hex2ascii(zchain.chain[1].body);
-        encodedata2
-        let decodedata2 = JSON.parse(encodedata2);
-        decodedata2
-        let jsondecode2 = JSON.parse(decodedata2);
-        jsondecode2
-
-        dd = zchain.chain[1].getBData();
-        dd = zchain.chain[2].getBData();
-
-        zchain.submitStar(address, message, signature) 
-
-        dd.then(dd.addresss);
-
-        zchain.getStarsByWalletAddress("13KFRfusy4mFHXgdtnCZAEWBSNPexhevPT")
-
-
-        let stars = [];
-        stars.push(`"owner":"abc","star":"cdf"`)
-        stars.push({"owner":"abc","star":"cdf"})
-
-        let star2 = {"star": {"dec": "68° 52' 56.9","ra": "16h 29m 1.0s","story": "Testing the story 4"}};
-
-let         let encodedata3 = hex2ascii(zchain.chain[1].body);
-
-
-        {
-            "address": "bc1qrg33ugya38qt825mw8lvjuy6fk9qs5vu88z4ma",
-            
-            
-        }
-        create(seed_type="standard", wallet_path="/path/to/wallet/wallet_1")
-        create(seed_type='standard')
-
-       seed
-        cargo discover require object retreat cousin rude nothing fabric shadow bronze rack
-
-
-        {
-            "hash": "9d39ab56abd19e7149dda54d23351d8ef40f16dc8961c97837cff6fba8d77212",
-            "height": 3,
-            "body": "227b5c22616464726573735c223a205c2231334b465266757379346d4648586764746e435a41455742534e50657868657650545c222c205c226d6573736167655c223a205c2231334b465266757379346d4648586764746e435a41455742534e50657868657650543a313632343837303630363a7374617252656769737472795c222c205c227369676e61747572655c223a205c2248786743796e4d4e62795567334553666d794d4848314c73483530324a7a4855563533356652744d346c4b5461447272514e766b56463673687650486b306c4a757938506259447a6f45566e48655639722b754b4546383d5c22207d22",
-            "time": "1624870748",
-            "previousBlockHash": "b05f2535401886ce42726167e1dd1e9dfbced9a91df5701980a7be0d598a317c"
-        }
-        {
-            "hash": "627dba23d5b59fcb798685e40d75c419078375889891f10730c4edd359a61483",
-            "height": 4,
-            "body": "227b5c22616464726573735c223a205c2231334b465266757379346d4648586764746e435a41455742534e50657868657650545c222c205c226d6573736167655c223a205c2231334b465266757379346d4648586764746e435a41455742534e50657868657650543a313632343837303630363a7374617252656769737472795c222c205c227369676e61747572655c223a205c2248786743796e4d4e62795567334553666d794d4848314c73483530324a7a4855563533356652744d346c4b5461447272514e766b56463673687650486b306c4a757938506259447a6f45566e48655639722b754b4546383d5c22207d22",
-            "time": "1624870782",
-            "previousBlockHash": "9d39ab56abd19e7149dda54d23351d8ef40f16dc8961c97837cff6fba8d77212"
-        }
+       

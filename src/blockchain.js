@@ -78,7 +78,7 @@ class Blockchain {
                 self.chain.push(newBlock);
                 self.height++ 
             }
-            resolve();
+            resolve(null);
         });
     }
 
@@ -144,7 +144,7 @@ class Blockchain {
             let time = parseInt(message.split(':')[1]);
             let currentTime = parseInt(new Date().getTime().toString().slice(0,-3));
 
-            let submitdata = `{"address": "${address}", "message": "${message}", "signature": "${signature}", "star": ${JSON.stringify(star.star)}} `; //
+            let submitdata = {"address": address, "message": message, "signature": signature, "star": star} ; //
 
             if ( (currentTime- time)/60 <5){
                 if (bitcoinMessage.verify(message,address,signature)){
@@ -152,9 +152,9 @@ class Blockchain {
                     self._addBlock(newBlock);
                     resolve(newBlock);
                 }
-                reject();
+                reject(null);
             } else {
-                reject();
+                reject(null);
             }
         });
     }
@@ -205,8 +205,10 @@ class Blockchain {
         let stars = [];
         return new Promise((resolve, reject) => {
             let ownerBlockArray = self.chain.filter(p =>p.getBData().address === address);
-            for(i=0; i< ownerBlockArray.length; i++){
-                stars.push({ "owner": `${ownerBlockArray.getBData().address}`, "star": `${ownerBlockArray.getBData().star}`});
+            for(let i=0; i< ownerBlockArray.length; i++){
+            //    stars.push({ "owner": `${ownerBlockArray[i].getBData().address}`, "star" : `${ownerBlockArray[i].getBData().star}`});
+              stars.push({ "owner": `${ownerBlockArray[i].getBData().address}`, "star" : ownerBlockArray[i].getBData().star});
+
             }
             if(stars){
                 resolve(stars);
